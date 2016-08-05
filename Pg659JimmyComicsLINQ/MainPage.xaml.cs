@@ -102,5 +102,14 @@ namespace Pg659JimmyComicsLINQ
         }
 
         #endregion
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ComicQuery query = e.ClickedItem as ComicQuery;
+            if (query != null)
+            {
+                this.Frame.Navigate(typeof(QueryDetail), query);
+            }
+        }
     }
 }

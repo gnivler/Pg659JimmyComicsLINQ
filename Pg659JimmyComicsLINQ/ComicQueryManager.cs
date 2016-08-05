@@ -23,7 +23,7 @@ namespace Pg659JimmyComicsLINQ
             AvailableQueries = new ObservableCollection<ComicQuery>
             {
                 new ComicQuery("Linq makes queries easy", "A sample query", "Let's show Jimmy how flexible LINQ is", "Assets/purple_250x250.jpg"),
-                new ComicQuery("Expensive comics", "Comics over $500", "Comics who value is over $500." + " Jimmy can use this to figure out which comcis are most coveted.", "Asset/captain-amazing_250x250.jpg"),
+                new ComicQuery("Expensive comics", "Comics over $500", "Comics who value is over $500." + " Jimmy can use this to figure out which comcis are most coveted.", "Assets/captain_amazing_250x250.jpg"),
             };
         }
 
@@ -60,7 +60,27 @@ namespace Pg659JimmyComicsLINQ
             }
         }
 
-        private void ExpensiveComics() { }
+        private void ExpensiveComics()
+        {
+            IEnumerable<Comic> comics = BuildCatalog();
+            Dictionary<int, decimal> values = GetPrices();
+
+            var mostExpensive = from comic in comics
+                                where values[comic.Issue] > 500
+                                orderby values[comic.Issue] descending
+                                select comic;
+
+            foreach (Comic comic in mostExpensive)
+            {
+                CurrentQueryResults.Add(
+                    new
+                    {
+                        Title = string.Format($"{comic.Name} is worth {values[comic.Issue]:c}"),
+                        ImagePath = "Assets/captain_amazing_250x250.jpg",
+                    }
+                );
+            }
+        }
 
         private void CreateImageFromAssets() { }
 
