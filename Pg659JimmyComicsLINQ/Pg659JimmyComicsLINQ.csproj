@@ -138,6 +138,7 @@
     <None Include="Pg659JimmyComicsLINQ_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bluegray_250x250.jpg" />
     <Content Include="Assets\captain_amazing_250x250.jpg" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\purple_250x250.jpg" />
