@@ -21,7 +21,7 @@ namespace Pg659JimmyComicsLINQ
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class QueryDetail : Page
     {
 
         private NavigationHelper navigationHelper;
@@ -45,7 +45,7 @@ namespace Pg659JimmyComicsLINQ
         }
 
 
-        public MainPage()
+        public QueryDetail()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -80,21 +80,28 @@ namespace Pg659JimmyComicsLINQ
         {
         }
 
-        #region NavigationHelper registration
-
-        /// The methods provided in this section are simply used to allow
-        /// NavigationHelper to respond to the page's navigation methods.
-        /// 
-        /// Page specific logic should be placed in event handlers for the  
-        /// <see cref="Common.NavigationHelper.LoadState"/>
-        /// and <see cref="Common.NavigationHelper.SaveState"/>.
-        /// The navigation parameter is available in the LoadState method 
-        /// in addition to page state preserved during an earlier session.
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            ComicQuery comicQuery = e.Parameter as ComicQuery;
+            if (comicQuery != null)
+            {
+                comicQueryManager.UpdateQueryResults(comicQuery);
+                pageTitle.Text = comicQueryManager.Title;
+            }
             navigationHelper.OnNavigatedTo(e);
         }
+
+        #region NavigationHelper registration
+
+            /// The methods provided in this section are simply used to allow
+            /// NavigationHelper to respond to the page's navigation methods.
+            /// 
+            /// Page specific logic should be placed in event handlers for the  
+            /// <see cref="Common.NavigationHelper.LoadState"/>
+            /// and <see cref="Common.NavigationHelper.SaveState"/>.
+            /// The navigation parameter is available in the LoadState method 
+            /// in addition to page state preserved during an earlier session.
+
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
