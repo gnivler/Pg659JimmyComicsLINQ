@@ -40,8 +40,8 @@ namespace Pg659JimmyComicsLINQ
         }
 
         private void LinqMakesQueriesEasy()
-            int[] values = new int[] { 0, 12, 44, 36, 92, 54, 13, 8 };
         {
+            int[] values = new int[] { 0, 12, 44, 36, 92, 54, 13, 8 };
             var result = from v in values
                          where v < 37
                          orderby v
