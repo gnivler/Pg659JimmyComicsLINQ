@@ -22,15 +22,14 @@ namespace Pg659JimmyComicsLINQ
         {
             AvailableQueries = new ObservableCollection<ComicQuery>
             {
-                new ComicQuery("Linq makes queries easy", "A sample query", "Let's show Jimmy how flexible LINQ is", "Assets/purple_250x250.jpg"),
-                new ComicQuery("Expensive comics", "Comics over $500", "Comics who value is over $500." + " Jimmy can use this to figure out which comcis are most coveted.", "Assets/captain_amazing_250x250.jpg"),
+                new ComicQuery("LINQ makes queries easy", "A sample query", "Let's show Jimmy how flexible LINQ is", "Assets/purple_250x250.jpg"),
+                new ComicQuery("Expensive comics", "Comics over $500", "Comics whose value is over $500." + " Jimmy can use this to figure out which comics are most coveted.", "Assets/captain_amazing_250x250.jpg"),
             };
         }
 
         public void UpdateQueryResults(ComicQuery query)
         {
             Title = query.Title;
-
             switch (query.Title)
             {
                 case "LINQ makes queries easy":
@@ -41,8 +40,8 @@ namespace Pg659JimmyComicsLINQ
         }
 
         private void LinqMakesQueriesEasy()
-        {
             int[] values = new int[] { 0, 12, 44, 36, 92, 54, 13, 8 };
+        {
             var result = from v in values
                          where v < 37
                          orderby v
@@ -99,7 +98,7 @@ namespace Pg659JimmyComicsLINQ
         {
             return new Dictionary<int, decimal> {
                 { 6, 3600M},
-                { 19, 500M},
+                { 19, 600M},
                 { 68, 250M},
                 { 74, 75M},
             };
